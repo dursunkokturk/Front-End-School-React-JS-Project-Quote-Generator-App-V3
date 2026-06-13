@@ -4,25 +4,38 @@ import { useEffect, useState } from 'react'
 
 export default function App() {
 
+  const [quotes, setQuotes] = useState([]);
   const [quote, setQuote] = useState([]);
+
+  // Tavsiye Numarasi
+  const [index, setIndex] = useState(null);
 
   useEffect(() => {
     fetch('https://dummyjson.com/quotes')
       .then(response => response.json())
-      .then(console.log);
-  })
+      // .then(console.log);
+      .then((data) => {
+        const randomIndex = Math.floor(Math.random() * data.quotes.length)
+
+        // Rastgele Numara Seciyoruz
+        setQuote(data.quotes[randomIndex])
+
+        // Secilen Numara Alintinin Id'si Oluyor
+        setIndex(data.quotes[randomIndex].id)
+      })
+  }, [])
 
   return (
     <>
       <div className="container">
         <div className="text-and-figures">
-          <h6>TAVSİYE #117</h6>
+          <h6>TAVSİYE #{index ?? '...'}</h6>
           <figure className='quote-card'>
             <blockquote>
-              “Dikkatini verip farkına varmak kolaydır, zor olan ise ayağa kalkıp harekete geçmektir.”
+              "{quote ? quote.quote : 'Yükleniyor...'}"
             </blockquote>
             <figcaption>
-              <cite>-Alıntı Sahibi</cite>
+              <cite>— {quote ? quote.author : ''}</cite>
             </figcaption>
           </figure>
           <div className="lines-and-ovals">
