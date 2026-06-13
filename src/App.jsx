@@ -35,7 +35,7 @@ export default function App() {
               "{quote ? quote.quote : 'Yükleniyor...'}"
             </blockquote>
             <figcaption>
-              <cite>— Alıntı Sahibi</cite>
+              <cite>— {quote ? quote.author : ''}</cite>
             </figcaption>
           </figure>
           <div className="lines-and-ovals">
