@@ -103,3 +103,15 @@ body {
   width: 24px;
   height: 24px;
 }
+
+@media (width>1109px){
+  .container .text-and-figures .circle:hover{
+    cursor: pointer;
+  }
+  
+  .container .text-and-figures .circle:active{
+    cursor: pointer;
+
+    box-shadow: 0px 0px 40px 0px #53FFAA;
+  }
+}
