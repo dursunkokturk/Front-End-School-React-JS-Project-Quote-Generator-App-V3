@@ -10,11 +10,16 @@ export default function App() {
   // Tavsiye Numarasi
   const [index, setIndex] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetch('https://dummyjson.com/quotes')
-      .then(response => response.json())
-      // .then(console.log);
+      .then(response => {
+        if (!response.ok) throw new Error("Sunucuya Ulaşılamadı")
+        return response.json()
+      })
+      // .then(response => response.json())
+      // .then(console.log)
       .then((data) => {
         const randomIndex = Math.floor(Math.random() * data.quotes.length)
 
@@ -25,6 +30,12 @@ export default function App() {
         setIndex(data.quotes[randomIndex].id)
         setLoading(false)
       })
+      .catch((err) => {
+        setError(err.message)
+        setLoading(false)
+      }
+
+      )
   }, [])
 
   return (
@@ -38,13 +49,19 @@ export default function App() {
                 <div className="loading-spinner"></div>
                 <p>Yükleniyor...</p>
               </div>
+            ) : error ? (
+              <div className="error">
+                <p className="error-icon">⚠</p>
+                <p className="error-text">Bir hata oluştu</p>
+                <p className="error-detail">{error}</p>
+              </div>
             ) : (
               <>
                 <blockquote>
-                  "{quote ? quote.quote : 'Yükleniyor...'}"
+                  "{quote.quote}"
                 </blockquote>
                 <figcaption>
-                  <cite>— {quote ? quote.author : ''}</cite>
+                  <cite>— {quote.author}</cite>
                 </figcaption>
               </>
             )}
