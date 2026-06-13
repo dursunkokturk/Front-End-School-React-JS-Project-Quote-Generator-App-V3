@@ -36,7 +36,7 @@ body {
   padding-bottom: 24px;
 }
 
-.container .text-and-figures h2 {
+.container .text-and-figures .quote-card blockquote {
   font-size: 24px;
   font-weight: 700;
   color: #CEE3E9;
@@ -44,6 +44,17 @@ body {
   letter-spacing: -0.26px;
   padding-inline: 24px;
   padding-bottom: 24px;
+}
+
+.container .text-and-figures .quote-card figcaption {
+  display: block;
+  text-align: center;
+  padding-bottom: 24px;
+}
+.container .text-and-figures .quote-card figcaption cite {
+  font-style: normal;
+  color: #CEE3E9;
+  opacity: 0.7;
 }
 
 .container .text-and-figures .lines-and-ovals {

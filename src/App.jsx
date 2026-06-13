@@ -8,7 +8,12 @@ export default function App() {
       <div className="container">
         <div className="text-and-figures">
           <h6>TAVSİYE #117</h6>
-          <h2>“Dikkatini verip farkına varmak kolaydır, zor olan ise ayağa kalkıp harekete geçmektir.”</h2>
+          <figure className='quote-card'>
+            <blockquote>“Dikkatini verip farkına varmak kolaydır, zor olan ise ayağa kalkıp harekete geçmektir.”</blockquote>
+            <figcaption>
+              <cite>- Alıntı Sahibi</cite>
+            </figcaption>
+          </figure>
           <div className="lines-and-ovals">
             <div className="line-left"></div>
             <div className="oval-left"></div>
